@@ -17,7 +17,6 @@ void iniciarLista(FILE* fl, No** nums);
 
 int main(){
     FILE* fl = fopen("arq.txt", "r");
-    FILE* fl = fopen("arq2.txt", "r");
 
     if(fl == NULL){
         printf("\n\nErro ao abrir\n\n");
@@ -25,12 +24,8 @@ int main(){
     }
 
     No* nums = NULL;
-    No* nums2 = NULL;
     iniciarLista(fl, &nums);
-    printf("\n\n---------------------------------------------\n\n");
-    iniciarLista(fl2, nums2)
     fclose(fl);
-    fclose(fl2);
     return 0;
 }
 
