@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Lê o arquivo de entrada
-            File arquivo = new File("arq.txt");
+            File arquivo = new File("arq-novo.txt");
             BufferedReader br = new BufferedReader(new FileReader(arquivo));
 
             LinkedList lista = new LinkedList();
@@ -13,7 +13,7 @@ public class Main {
             String linha = br.readLine().trim();  // Usando trim() para remover espaços extras
             String[] numerosIniciais = linha.split("\\s+");  // Usando \\s+ para dividir por espaços múltiplos
             for (String num : numerosIniciais) {
-                lista.adicionar(Integer.parseInt(num), 0);
+                lista.adicionarFinal(Integer.parseInt(num));  // Adiciona ao final da lista
             }
 
             // Lê a quantidade de ações

@@ -36,15 +36,13 @@ class ListaEncadeada:
             atual = atual.proximo
 
         # Caso o valor não seja encontrado, não faz nada
-        print(f"Valor {valor} não encontrado para remoção.")
 
     def imprimir(self):
         atual = self.head
-        lista = []
         while atual:
-            lista.append(str(atual.valor))
+            print(atual.valor, end=" ")
             atual = atual.proximo
-        print("Lista:", " -> ".join(lista))
+        print("\n")
 
     def adicionar_posicao(self, valor, posicao):
         novo_nodo = Nodo(valor)
@@ -62,8 +60,6 @@ class ListaEncadeada:
         if atual:  # Inserir após o nodo atual
             novo_nodo.proximo = atual.proximo
             atual.proximo = novo_nodo
-        else:
-            print(f"Posição {posicao} fora do alcance. Não foi possível adicionar.")
 
     def remover_posicao(self, posicao):
         if posicao == 0:
@@ -83,8 +79,6 @@ class ListaEncadeada:
         
         if atual:
             anterior.proximo = atual.proximo
-        else:
-            print(f"Posição {posicao} fora do alcance. Não foi possível remover.")
 
 # Função que lê o arquivo e executa as operações
 def processar_arquivo(nome_arquivo):
@@ -122,5 +116,5 @@ def processar_arquivo(nome_arquivo):
 
 # Exemplo de execução
 if __name__ == "__main__":
-    processar_arquivo("arq.txt")
+    processar_arquivo("arq-novo.txt")
 

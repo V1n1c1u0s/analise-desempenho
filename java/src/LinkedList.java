@@ -1,14 +1,22 @@
 public class LinkedList {
-    private Node head;
+    Node head;
 
-    // Construtor
-    public LinkedList() {
-        this.head = null;
+    // Classe interna para representar um nó da lista
+    private class Node {
+        int data;
+        Node next;
+
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
     }
 
-    // Adicionar um número na posição especificada
+    // Método para adicionar um número na posição especificada
     public void adicionar(int numero, int posicao) {
         Node novoNo = new Node(numero);
+
+        // Se a posição for 0, insere no início da lista
         if (posicao == 0) {
             novoNo.next = head;
             head = novoNo;
@@ -16,10 +24,12 @@ public class LinkedList {
         }
 
         Node temp = head;
-        for (int i = 0; i < posicao - 1 && temp != null; i++) {
+        // Percorre até o nó anterior à posição desejada
+        for (int i = 0; temp != null && i < posicao - 1; i++) {
             temp = temp.next;
         }
 
+        // Se a posição for válida (ou seja, temp não é null), insere o novo nó
         if (temp != null) {
             novoNo.next = temp.next;
             temp.next = novoNo;
@@ -28,42 +38,57 @@ public class LinkedList {
         }
     }
 
-    // Remover o primeiro nó encontrado com o valor especificado
+    // Método para remover o primeiro nó com o valor especificado
     public void remover(int numero) {
+        // Se a lista estiver vazia, retorna
         if (head == null) {
-            System.out.println("Lista vazia!");
             return;
         }
 
-        if (head.numero == numero) {
+        // Se o primeiro nó for o que queremos remover
+        if (head.data == numero) {
             head = head.next;
             return;
         }
 
+        // Percorre a lista procurando o nó a ser removido
         Node temp = head;
-        while (temp.next != null && temp.next.numero != numero) {
+        while (temp.next != null && temp.next.data != numero) {
             temp = temp.next;
         }
 
+        // Se encontrou o número, remove o nó
         if (temp.next != null) {
             temp.next = temp.next.next;
-        } else {
-            System.out.println("Número não encontrado!");
         }
     }
 
-    // Imprimir a lista
+    // Método para imprimir a lista
     public void imprimir() {
         if (head == null) {
-            System.out.println("Lista vazia!");
+            System.out.println("Lista vazia");
             return;
         }
 
         Node temp = head;
         while (temp != null) {
-            System.out.print(temp.numero + " ");
+            System.out.print(temp.data + " ");
             temp = temp.next;
         }
         System.out.println();
+    }
+
+    // Método para adicionar ao final da lista (necessário para inicialização correta)
+    public void adicionarFinal(int numero) {
+        Node novoNo = new Node(numero);
+        if (head == null) {
+            head = novoNo;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = novoNo;
+        }
     }
 }
