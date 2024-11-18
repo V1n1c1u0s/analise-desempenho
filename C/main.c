@@ -60,7 +60,11 @@ void addNo(No** nums, int valor, int pos){
         temp = temp->prox;
         posAtual++;
     }
-    // Insere no fim caso a pos ultrapasse o limite
+    
+    if (temp == NULL || (temp->prox == NULL && pos > posAtual + 1)) {
+        return;  // Posição fornecida inválida, não adiciona
+    }
+
     novoNo->prox = temp->prox;
     temp->prox = novoNo;
 }
