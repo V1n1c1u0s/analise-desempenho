@@ -1,4 +1,4 @@
-class Nodo:
+class Node:
     def __init__(self, valor):
         self.valor = valor
         self.proximo = None
@@ -11,15 +11,15 @@ class ListaEncadeada:
                 self.adicionar(valor)
 
     def adicionar(self, valor):
-        novo_nodo = Nodo(valor)
+        novo_node = Node(valor)
         if not self.head:
-            self.head = novo_nodo
+            self.head = novo_node
         else:
             # Atravessa a lista para encontrar a última posição
             atual = self.head
             while atual.proximo:
                 atual = atual.proximo
-            atual.proximo = novo_nodo
+            atual.proximo = novo_node
 
     def remover(self, valor):
         atual = self.head
@@ -27,9 +27,9 @@ class ListaEncadeada:
 
         while atual:
             if atual.valor == valor:
-                if anterior:  # Se não for o primeiro nodo
+                if anterior:  # Se não for o primeiro node
                     anterior.proximo = atual.proximo
-                else:  # Se for o primeiro nodo
+                else:  # Se for o primeiro node
                     self.head = atual.proximo
                 return  # A remoção foi realizada, retornamos
             anterior = atual
@@ -45,10 +45,10 @@ class ListaEncadeada:
         print("\n")
 
     def adicionar_posicao(self, valor, posicao):
-        novo_nodo = Nodo(valor)
+        novo_node = Node(valor)
         if posicao == 0:  # Adicionar no início
-            novo_nodo.proximo = self.head
-            self.head = novo_nodo
+            novo_node.proximo = self.head
+            self.head = novo_node
             return
         
         atual = self.head
@@ -57,9 +57,9 @@ class ListaEncadeada:
             atual = atual.proximo
             indice += 1
         
-        if atual:  # Inserir após o nodo atual
-            novo_nodo.proximo = atual.proximo
-            atual.proximo = novo_nodo
+        if atual:  # Inserir após o node atual
+            novo_node.proximo = atual.proximo
+            atual.proximo = novo_node
 
     def remover_posicao(self, posicao):
         if posicao == 0:
