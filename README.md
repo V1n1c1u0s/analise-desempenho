@@ -4,7 +4,7 @@
 
 ## cd python && python main.py
 
-## cd java/src && javac Main.java LinkedList.java Node.java & java Main
+## cd java/src && javac Main.java LinkedList.java && java Main
 
 
 
