@@ -1,15 +1,13 @@
 # Repositório Para As Atividades Da Matéria Análise e Desempenho
 
+## Atividade 1 e 2
 <details>
-<summary> Atividade 1 e 2</summary>
-    <details>
-    <summary>C</summary>
+<summary>C</summary>
 
-    ```console
-    cd C && gcc -o main main.c
-    ```
+```console
+cd C && gcc -o main main.c
+```
 
-    </details>
 </details>
 ### Código em Python
 
