@@ -3,19 +3,21 @@
 > [!IMPORTANT]
 > Os códigos apresentados estão sendo rodados no Windows em seu WSL(Ubuntu).
 
+## Instalação
+
+```shell
+git clone https://github.com/V1n1c1u0s/analise-desempenho.git
+cd analise-desempenho
+```
+
 > [!WARNING]
-> Certifique-se que as dependências estejam instaladas.
+> Certifique-se de que as dependências estejam instaladas.
 > ```shell
 > sudo apt update && sudo apt upgrade
 > sudo apt install php golang
 > curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 >```
 
-## Instalação
-
-```shell
-git clone https://github.com/V1n1c1u0s/analise-desempenho.git
-```
 
 ## Atividades 1 e 2
 <details>
