@@ -1,27 +1,44 @@
 # Repositório Para As Atividades Da Matéria Análise e Desempenho
 
-## Atividade 1 e 2
+> [!IMPORTANT]
+> Os códigos apresentados estão sendo rodados no Windows em seu WSL(Ubuntu).
+
+> [!WARNING]
+> Certifique-se que as dependências estejam instaladas.
+> ´´´console 
+> sudo apt update && sudo apt upgrade
+> sudo apt install php && sudo apt install golang
+> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+>´´´
+
+## Atividades 1 e 2
 <details>
 <summary>C</summary>
-
 ```console
 cd C && gcc -o main main.c
 ```
-
 </details>
-### Código em Python
-
+<details>
+<summary>Python</summary>
 ```bash
 cd python && python main.py
 ```
+</details>
 
-### Código em Java 
+<details>
+<summary>Java</summary> 
 ```sh
 cd java/src && javac Main.java LinkedList.java && java Main
 ```
-## Atividade 3 
-Em andamento
+</details>
 
-| | | |
-|------------|----------------|----------|
-| <details> <summary>Python</summary> ```console cd python && python main.py ``` </details> | <details> <summary>C</summary> ```console cd C && gcc -o main main.c``` </details> | <details> <summary>Java</summary> ```java cd java/src && javac Main.java LinkedList.java && java Main``` </details> |
+## Atividade 3 
+<details>
+<summary>Rust</summary>
+</details>
+<details>
+<summary>PHP</summary>
+</details>
+<details>
+<summary>Golang</summary> 
+</details>
