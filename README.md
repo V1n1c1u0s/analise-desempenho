@@ -5,29 +5,29 @@
 
 > [!WARNING]
 > Certifique-se que as dependências estejam instaladas.
-> ´´´console 
+> ```shell
 > sudo apt update && sudo apt upgrade
 > sudo apt install php && sudo apt install golang
 > curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
->´´´
+>```
 
 ## Atividades 1 e 2
 <details>
 <summary>C</summary>
-```console
+```shell
 cd C && gcc -o main main.c
 ```
 </details>
 <details>
 <summary>Python</summary>
-```bash
+```shell
 cd python && python main.py
 ```
 </details>
 
 <details>
 <summary>Java</summary> 
-```sh
+```shell
 cd java/src && javac Main.java LinkedList.java && java Main
 ```
 </details>
