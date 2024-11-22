@@ -1,0 +1,9 @@
+[package]
+name = "rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sysinfo = "0.23"
+jemallocator = "0.3"
+libc = "0.2"

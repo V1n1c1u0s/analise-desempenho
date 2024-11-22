@@ -1,4 +1,4 @@
-# Repositório Para As Atividades Da Matéria Análise e Desempenho
+# ATVs Da Matéria Análise e Desempenho
 
 > [!IMPORTANT]
 > Os códigos apresentados estão sendo rodados no Windows em seu WSL(Ubuntu).
@@ -14,12 +14,12 @@ cd analise-desempenho
 > Certifique-se de que as dependências estejam instaladas.
 > ```shell
 > sudo apt update && sudo apt upgrade
-> sudo apt install php golang
+> sudo apt install build-essential pkg-config php golang libjemalloc-dev
 > curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 >```
 
 
-## Atividades 1 e 2
+## ATVs 1 e 2
 <details>
 <summary>C</summary>
 
@@ -49,7 +49,7 @@ java Main
 
 </details>
 
-## Atividade 3 
+## ATV 3 
 <details>
 <summary>Rust</summary>
 </details>
