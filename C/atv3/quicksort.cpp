@@ -34,7 +34,6 @@ int partition(vector<int>& arr, int low, int high) {
     }
 }
 
-// Função do QuickSort sequencial
 void quickSort(vector<int>& arr, int low, int high) {
     if (low < high) {
         int pi = partition(arr, low, high);
@@ -48,7 +47,7 @@ void quickSort(vector<int>& arr, int low, int high) {
 int main() {
     auto start = chrono::high_resolution_clock::now();
 
-    ifstream file("arq.txt");
+    ifstream file("arq-desafio.txt");
     if (!file) {
         cerr << "Erro ao abrir o arquivo!" << endl;
         return 1;

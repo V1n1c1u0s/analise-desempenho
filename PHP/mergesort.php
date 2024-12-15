@@ -83,7 +83,7 @@ function getPeakMemoryUsage() {
     return memory_get_peak_usage(true) / 1024; // KB
 }
 
-$filePath = "arq.txt";
+$filePath = "arq-desafio.txt";
 $initialMemory = getMemoryUsage();
 echo "Initial memory usage: " . $initialMemory . " KB\n";
 

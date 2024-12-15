@@ -77,7 +77,7 @@ func getPeakMemoryUsage() uint64 {
 }
 
 func main() {
-	filePath := "arq.txt"
+	filePath := "arq-desafio.txt"
 	initialMemory := getMemoryUsage()
 	fmt.Printf("Mem inicial: %d KB\n", initialMemory)
 

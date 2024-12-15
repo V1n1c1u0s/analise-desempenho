@@ -79,7 +79,7 @@ int main() {
     // Medir o tempo de execução
     auto start = chrono::high_resolution_clock::now();
 
-    ifstream file("arq.txt");
+    ifstream file("arq-desafio.txt");
     if (!file) {
         cerr << "Erro ao abrir o arquivo!" << endl;
         return 1;

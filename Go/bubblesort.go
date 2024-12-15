@@ -35,7 +35,6 @@ func getMemoryUsage() uint64 {
 }
 
 // Read numbers from a file
-// Read numbers from a file
 func readNumbersFromFile(filePath string) ([]int, error) {
 	var numbers []int
 	file, err := os.Open(filePath)
@@ -63,8 +62,7 @@ func readNumbersFromFile(filePath string) ([]int, error) {
 
 
 func main() {
-	// File path for your data file
-	filePath := "arq.txt" // Replace with your actual file path
+	filePath := "arq-desafio.txt"
 
 	// Measure initial memory usage
 	initialMemory := getMemoryUsage()
@@ -97,7 +95,4 @@ func main() {
 
 	// Display peak memory usage
 	fmt.Printf("Peak memory usage: %d KB\n", afterSortingMemory)
-
-	// Optionally, display sorted numbers (for testing purposes)
-	// fmt.Println("Sorted numbers:", numbers)
 }
