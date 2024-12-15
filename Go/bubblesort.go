@@ -84,13 +84,22 @@ func main() {
 
 	// Perform bubble sort
 	bubbleSort(numbers)
-	fmt.Printf("Sorted array: %d", numbers)
+	//fmt.Printf("Sorted array: %d", numbers)
 	// Memory usage after sorting
 	afterSortingMemory := getMemoryUsage()
 	fmt.Printf("Memory usage after sorting: %d KB\n", afterSortingMemory)
 
+	outFile, err := os.Create("arq-saida.txt")
+	if err != nil {	log.Fatal("Cannot create arq-saida.txt: ", err) }
+	defer outFile.Close()
+
+	for _, item := range numbers {
+		_, err := fmt.Fprintf(outFile, "%d\n", item)
+		if err != nil { log.Fatal("Error writing to arq-saida.txt:", err) }
+	}
+
 	// Measure execution time
-	elapsed := time.Since(startTime)
+	elapsed := time.Since(startTime).Seconds()
 	fmt.Printf("Execution time: %s\n", elapsed)
 
 	// Display peak memory usage
