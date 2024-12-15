@@ -101,7 +101,7 @@ func main() {
 
 	// Measure execution time
 	elapsed := time.Since(startTime).Seconds()
-	fmt.Printf("Execution time: %s\n", elapsed)
+	fmt.Printf("Execution time: %.4f seconds\n", elapsed)
 
 	// Display peak memory usage
 	fmt.Printf("Peak memory usage: %d KB\n", afterSortingMemory)
