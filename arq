@@ -1,0 +1,6 @@
+Informações do Sitema
+cat /etc/os-release | grep PRETTY_NAME | sed 's/.*(.*).*/\1/'
+uname -r >> arq
+cat /proc/cpuinfo | grep 'model name' | uniq | awk -F': ' '{print }'
+cat /proc/meminfo | grep MemTotal | awk -F':       ' '{print }'
+5.15.167.4-microsoft-standard-WSL2

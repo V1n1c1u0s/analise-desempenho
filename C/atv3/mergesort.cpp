@@ -19,10 +19,8 @@ void merge(vector<int>& arr, int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    // Vetores temporários
     vector<int> leftArr(n1), rightArr(n2);
 
-    // Copiar os dados para os vetores temporários
     for (int i = 0; i < n1; i++) {
         leftArr[i] = arr[left + i];
     }
@@ -30,7 +28,6 @@ void merge(vector<int>& arr, int left, int mid, int right) {
         rightArr[j] = arr[mid + 1 + j];
     }
 
-    // Mesclar os vetores temporários de volta para o vetor original
     int i = 0; 
     int j = 0; 
     int k = left; 
@@ -45,15 +42,11 @@ void merge(vector<int>& arr, int left, int mid, int right) {
         }
         k++;
     }
-
-    // Copiar os elementos restantes do leftArr, se houver
     while (i < n1) {
         arr[k] = leftArr[i];
         i++;
         k++;
     }
-
-    // Copiar os elementos restantes do rightArr, se houver
     while (j < n2) {
         arr[k] = rightArr[j];
         j++;
@@ -65,18 +58,13 @@ void merge(vector<int>& arr, int left, int mid, int right) {
 void mergeSort(vector<int>& arr, int left, int right) {
     if (left < right) {
         int mid = left + (right - left) / 2;
-
-        // Ordenar as duas metades
         mergeSort(arr, left, mid);
         mergeSort(arr, mid + 1, right);
-
-        // Combinar as metades ordenadas
         merge(arr, left, mid, right);
     }
 }
 
 int main() {
-    // Medir o tempo de execução
     auto start = chrono::high_resolution_clock::now();
 
     ifstream file("arq.txt");
@@ -92,10 +80,8 @@ int main() {
     }
     file.close();
 
-    // Chama o MergeSort
     mergeSort(arr, 0, arr.size() - 1);
 
-    // Escrever os números ordenados em um arquivo de saída
     ofstream outputFile("arq-saida.txt");
     if (!outputFile) {
         cerr << "Erro ao abrir o arquivo de saída!" << endl;
@@ -103,11 +89,10 @@ int main() {
     }
 
     for (int i = 0; i < arr.size(); i++) {
-        outputFile << arr[i] << endl;  // Escreve os números ordenados no arquivo
+        outputFile << arr[i] << endl;  
     }
     outputFile.close();
 
-    // Medir o tempo de execução após a ordenação
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> duration = end - start;
     cout << "Tempo de execução: " << duration.count() << " segundos" << endl;

@@ -1,0 +1,5 @@
+Informações do Sitema
+Ubuntu 24.04.1 LTS
+5.15.167.4-microsoft-standard-WSL2
+Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz
+12183568 kB
