@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"strconv"
 	"time"
+	"log"
 )
 
 // Bubble Sort implementation
@@ -35,7 +36,6 @@ func getMemoryUsage() uint64 {
 }
 
 // Read numbers from a file
-// Read numbers from a file
 func readNumbersFromFile(filePath string) ([]int, error) {
 	var numbers []int
 	file, err := os.Open(filePath)
@@ -63,8 +63,7 @@ func readNumbersFromFile(filePath string) ([]int, error) {
 
 
 func main() {
-	// File path for your data file
-	filePath := "arq.txt" // Replace with your actual file path
+	filePath := "arq-desafio.txt"
 
 	// Measure initial memory usage
 	initialMemory := getMemoryUsage()
@@ -86,18 +85,24 @@ func main() {
 
 	// Perform bubble sort
 	bubbleSort(numbers)
-	fmt.Printf("Sorted array: %d", numbers)
+	//fmt.Printf("Sorted array: %d", numbers)
 	// Memory usage after sorting
 	afterSortingMemory := getMemoryUsage()
 	fmt.Printf("Memory usage after sorting: %d KB\n", afterSortingMemory)
 
+	outFile, err := os.Create("arq-saida.txt")
+	if err != nil {	log.Fatal("Cannot create arq-saida.txt: ", err) }
+	defer outFile.Close()
+
+	for _, item := range numbers {
+		_, err := fmt.Fprintf(outFile, "%d\n", item)
+		if err != nil { log.Fatal("Error writing to arq-saida.txt:", err) }
+	}
+
 	// Measure execution time
-	elapsed := time.Since(startTime)
-	fmt.Printf("Execution time: %s\n", elapsed)
+	elapsed := time.Since(startTime).Seconds()
+	fmt.Printf("Execution time: %.4f seconds\n", elapsed)
 
 	// Display peak memory usage
 	fmt.Printf("Peak memory usage: %d KB\n", afterSortingMemory)
-
-	// Optionally, display sorted numbers (for testing purposes)
-	// fmt.Println("Sorted numbers:", numbers)
 }

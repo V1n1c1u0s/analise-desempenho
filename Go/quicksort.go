@@ -10,7 +10,6 @@ import (
 	"sync"
 )
 
-// Função para obter o uso de memória
 func getMemoryUsage() int64 {
 	var memStats runtime.MemStats
 	runtime.ReadMemStats(&memStats)
@@ -56,8 +55,7 @@ func main() {
 	// Medir o tempo de execução
 	start := time.Now()
 
-	// Abrir o arquivo de entrada
-	file, err := os.Open("arq.txt")
+	file, err := os.Open("arq-desafio.txt")
 	if err != nil {
 		fmt.Println("Erro ao abrir o arquivo:", err)
 		return
