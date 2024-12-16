@@ -2,10 +2,10 @@
 
 arq="info_sistema.txt"
 
-echo "Informações do Sitema" > "$arq"
+echo "Informações do Sitema" > "Graficos/$arq"
 
 add_entrada(){
-	echo -e "$1" >> "$arq"
+	echo -e "$1" >> "Graficos/$arq"
 }
 
 

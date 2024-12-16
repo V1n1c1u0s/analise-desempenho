@@ -18,14 +18,19 @@ for i in "${arqs[@]}"
 do
     cd "${caminho[0]}" || { echo "Erro: diretório ${caminho[0]} não encontrado"; exit 1; }
     rodar "./$i" "$i-cpp"
+    python3 ../../Graficos/main.py "$i-cpp.txt"
 
     cd "${caminho[1]}" || { echo "Erro: diretório ${caminho[1]} não encontrado"; exit 1; }
     rodar "php $i.php" "$i-php"
+    python3 ../Graficos/main.py "$i-php.txt"
 
     cd "${caminho[2]}" || { echo "Erro: diretório ${caminho[2]} não encontrado"; exit 1; }
     rodar "go run $i.go" "$i-go"
+    python3 ../Graficos/main.py "$i-go.txt"
 
     cd "${caminho[3]}"
+    
 done
+
 
 
