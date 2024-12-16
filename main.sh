@@ -10,24 +10,22 @@ rodar(){
     fi
     for j in {1..10}
     do
-        echo -e "$1" >> "$2.txt"
+        $1 | grep -oE '[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+' >> "$2.txt"
     done
 }
 
 for i in "${arqs[@]}"
 do
-    # Rodando o programa C
     cd "${caminho[0]}" || { echo "Erro: diretório ${caminho[0]} não encontrado"; exit 1; }
-    rodar "$(./$i | grep -oE '[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+')" "$i-cpp"
+    rodar "./$i" "$i-cpp"
 
-    # Rodando o programa PHP
     cd "${caminho[1]}" || { echo "Erro: diretório ${caminho[1]} não encontrado"; exit 1; }
-    rodar "$(php "$i.php" | grep -oE "[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+")" "$i-php"
+    rodar "php $i.php" "$i-php"
 
-    # Rodando o programa Go
     cd "${caminho[2]}" || { echo "Erro: diretório ${caminho[2]} não encontrado"; exit 1; }
-    rodar "$(go run "$i.go" | grep -oE "[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+")" "$i-go"
+    rodar "go run $i.go" "$i-go"
 
-    # Voltando ao diretório base
     cd "${caminho[3]}"
 done
+
+
