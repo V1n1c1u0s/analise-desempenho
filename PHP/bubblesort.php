@@ -48,14 +48,14 @@ function getPeakMemoryUsage() {
 
 $filePath = "arq-desafio.txt";
 $initialMemory = getMemoryUsage();
-echo "Initial memory usage: " . $initialMemory . " KB\n";
+//echo "Initial memory usage: " . $initialMemory . " KB\n";
 
 $startTime = microtime(true);
 
 $numbers = readNumbersFromFile($filePath);
 
 $afterArrayGenerationMemory = getMemoryUsage();
-echo "Memory usage after generating array: " . $afterArrayGenerationMemory . " KB\n";
+//echo "Memory usage after generating array: " . $afterArrayGenerationMemory . " KB\n";
 
 $inicio = 0;
 $fim = sizeof($numbers) - 1;
@@ -63,7 +63,7 @@ $fim = sizeof($numbers) - 1;
 bubbleSort($numbers);
 
 $afterSortingMemory = getMemoryUsage();
-echo "Memory usage after sorting: " . $afterSortingMemory . " KB\n";
+//echo "Memory usage after sorting: " . $afterSortingMemory . " KB\n";
 
 
 $outFile = fopen("arq-saida.txt", "w");
@@ -74,5 +74,5 @@ fclose($outFile);
 
 $executionTime = microtime(true) - $startTime;
 $peakMemory = getPeakMemoryUsage();
-echo "Peak memory usage: " . $peakMemory . " KB\n";
 echo "Execution time: " . number_format($executionTime, 4) . " seconds\n";
+echo "Peak memory usage: " . $peakMemory . " KB\n";

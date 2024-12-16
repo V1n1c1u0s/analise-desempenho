@@ -6,8 +6,8 @@ import (
 	"os"
 	"runtime"
 	"strconv"
-	"time"
 	"sync"
+	"time"
 )
 
 func getMemoryUsage() int64 {

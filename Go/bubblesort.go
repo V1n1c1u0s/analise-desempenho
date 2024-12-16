@@ -3,11 +3,11 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"runtime"
 	"strconv"
 	"time"
-	"log"
 )
 
 // Bubble Sort implementation
@@ -42,7 +42,7 @@ func readNumbersFromFile(filePath string) ([]int, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()  // Ensures file is closed after reading
+	defer file.Close() // Ensures file is closed after reading
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -60,7 +60,6 @@ func readNumbersFromFile(filePath string) ([]int, error) {
 
 	return numbers, nil
 }
-
 
 func main() {
 	filePath := "arq-desafio.txt"
@@ -91,12 +90,16 @@ func main() {
 	fmt.Printf("Memory usage after sorting: %d KB\n", afterSortingMemory)
 
 	outFile, err := os.Create("arq-saida.txt")
-	if err != nil {	log.Fatal("Cannot create arq-saida.txt: ", err) }
+	if err != nil {
+		log.Fatal("Cannot create arq-saida.txt: ", err)
+	}
 	defer outFile.Close()
 
 	for _, item := range numbers {
 		_, err := fmt.Fprintf(outFile, "%d\n", item)
-		if err != nil { log.Fatal("Error writing to arq-saida.txt:", err) }
+		if err != nil {
+			log.Fatal("Error writing to arq-saida.txt:", err)
+		}
 	}
 
 	// Measure execution time

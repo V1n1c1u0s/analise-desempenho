@@ -3,11 +3,11 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 	"runtime"
-	"time"
 	"strconv"
-	"log"
+	"time"
 )
 
 func merge(arr []int, left, mid, right int) {
@@ -52,23 +52,29 @@ func mergeSort(arr []int, left, right int) {
 func readNumbersFromFile(filePath string) ([]int, error) {
 	var numbers []int
 	file, err := os.Open(filePath)
-	if err != nil {	return nil, err }
+	if err != nil {
+		return nil, err
+	}
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if num, err := strconv.Atoi(line); err == nil {	numbers = append(numbers, num); }
+		if num, err := strconv.Atoi(line); err == nil {
+			numbers = append(numbers, num)
+		}
 	}
-	if err := scanner.Err(); err != nil { return nil, err }
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
 	return numbers, nil
 }
 
-func getMemoryUsage() uint64 {
+/*func getMemoryUsage() uint64 {
 	var memStats runtime.MemStats
 	runtime.ReadMemStats(&memStats)
 	return memStats.Alloc / 1024 // Retorna em KB
-}
+}*/
 
 func getPeakMemoryUsage() uint64 {
 	var memStats runtime.MemStats
@@ -78,33 +84,39 @@ func getPeakMemoryUsage() uint64 {
 
 func main() {
 	filePath := "arq-desafio.txt"
-	initialMemory := getMemoryUsage()
-	fmt.Printf("Mem inicial: %d KB\n", initialMemory)
+	//initialMemory := getMemoryUsage()
+	//fmt.Printf("Mem inicial: %d KB\n", initialMemory)
 
 	startTime := time.Now()
 
 	numbers, err := readNumbersFromFile(filePath)
-	if err != nil {	log.Fatal("Erro ao ler arq.txt: ", err) }
+	if err != nil {
+		log.Fatal("Erro ao ler arq.txt: ", err)
+	}
 
-	afterArrayGenerationMemory := getMemoryUsage()
-	fmt.Printf("Mem usada dps de gerar array: %d KB\n", afterArrayGenerationMemory)
+	//afterArrayGenerationMemory := getMemoryUsage()
+	//fmt.Printf("Mem usada dps de gerar array: %d KB\n", afterArrayGenerationMemory)
 
 	mergeSort(numbers, 0, len(numbers)-1)
 
-	afterSortingMemory := getMemoryUsage()
-	fmt.Printf("Mem usada dps de ord: %d KB\n", afterSortingMemory)
+	//afterSortingMemory := getMemoryUsage()
+	//fmt.Printf("Mem usada dps de ord: %d KB\n", afterSortingMemory)
 
 	outFile, err := os.Create("arq-saida.txt")
-	if err != nil {	log.Fatal("Error ao criar arq-saida.txt: ", err) }
+	if err != nil {
+		log.Fatal("Error ao criar arq-saida.txt: ", err)
+	}
 	defer outFile.Close()
 
 	for _, item := range numbers {
 		_, err := fmt.Fprintf(outFile, "%d\n", item)
-		if err != nil { log.Fatal("Erro ao escrever arq-saida.txt:", err) }
+		if err != nil {
+			log.Fatal("Erro ao escrever arq-saida.txt:", err)
+		}
 	}
 
 	executionTime := time.Since(startTime).Seconds()
 	peakMemory := getPeakMemoryUsage()
-	fmt.Printf("Pico de mem usada: %d KB\n", peakMemory)
 	fmt.Printf("Tempo de Exec: %.4f seconds\n", executionTime)
+	fmt.Printf("Pico de mem usada: %d KB\n", peakMemory)
 }

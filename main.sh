@@ -1,27 +1,33 @@
 #!/bin/bash
-
 arqs=("bubblesort" "quicksort" "mergesort")
+caminho=("C/atv3" "../../PHP" "../Go" "../")
 
-langs=("c" "php" "go")
-
-caminho=("C/atv3/" "../../PHP" "../Go" "../")
 
 rodar(){
-    echo -e "$2" >> ${arqs[0]}.txt
-    for i in {1..10}
+    if [ -e "$2.txt" ]; then
+        echo "Arquivo "$2.txt" já existe. Removendo..."
+        rm "$2.txt"
+    fi
+    for j in {1..10}
     do
-        echo -e "$1" >> ${arqs[0]}.txt
+        echo -e "$1" >> "$2.txt"
     done
 }
 
-for i in $arqs
+for i in "${arqs[@]}"
 do
-    cd $caminho[0]
-    rodar "$(./${arqs[i]} | grep -oE '[tempo|memória|+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+')" "C"
-    cd $caminho[1]
-    rodar "$(php ${arqs[i]}'.php' | grep -oE '[peak|execution|+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+')" "PHP"
-    cd $caminho[2]
-    rodar "$(go run ${arqs[i]}'.go' | grep -oE '[peak|execution|+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+')" "Go"
-    cd $caminho[3]
-done
+    # Rodando o programa C
+    cd "${caminho[0]}" || { echo "Erro: diretório ${caminho[0]} não encontrado"; exit 1; }
+    rodar "$(./$i | grep -oE '[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+')" "$i-cpp"
 
+    # Rodando o programa PHP
+    cd "${caminho[1]}" || { echo "Erro: diretório ${caminho[1]} não encontrado"; exit 1; }
+    rodar "$(php "$i.php" | grep -oE "[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+")" "$i-php"
+
+    # Rodando o programa Go
+    cd "${caminho[2]}" || { echo "Erro: diretório ${caminho[2]} não encontrado"; exit 1; }
+    rodar "$(go run "$i.go" | grep -oE "[+-]?[0-9]*\.[0-9]+|[+-]?[0-9]+")" "$i-go"
+
+    # Voltando ao diretório base
+    cd "${caminho[3]}"
+done
