@@ -47,3 +47,26 @@ plt.legend()
 # Exibir o gráfico
 plt.tight_layout()
 plt.show()
+
+media_heapsort = np.mean(tempos_arquivo1)
+media_quicksort = np.mean(tempos_arquivo2)
+media_mergesort = np.mean(tempos_arquivo3)
+
+# Configuração do gráfico para as médias
+algoritmos = ['Heapsort', 'Quicksort', 'Mergesort']
+medias = [media_heapsort, media_quicksort, media_mergesort]
+
+# Criação do gráfico de barras para as médias
+plt.figure(figsize=(8, 5))
+
+# Barra para a média dos tempos
+plt.bar(algoritmos, medias, color=['skyblue', 'lightgreen', 'salmon'])
+
+# Adicionar título e rótulos aos eixos
+plt.title('Média dos Tempos de Execução', fontsize=14)
+plt.xlabel('10000 Números', fontsize=12)
+plt.ylabel('Média do Tempo de Execução (segundos)', fontsize=12)
+
+# Exibir o gráfico
+plt.tight_layout()
+plt.show()
