@@ -84,3 +84,19 @@ with PdfPages(f'{args.number}-num-grafico.pdf') as pdf:
     plt.tight_layout()
     pdf.savefig()
     plt.close()
+
+    plt.figure(figsize=(10, 6))
+
+    vencedor = medias.index(min(medias))
+
+    texto = (
+        f"Ganhador da Competição: {algoritmos[vencedor]}\n"
+        f"Obteve o menor tempo de execução média. {medias[vencedor]} segundos"
+    )
+
+    plt.text(0.5, 0.5, texto, fontsize=12, ha='center', va='center', wrap=True)
+    # Ajusta o layout e salva o texto como uma "página" no PDF
+    plt.axis('off')  # Desativa os eixos, já que é apenas texto
+    plt.tight_layout()
+    pdf.savefig()
+    plt.close()

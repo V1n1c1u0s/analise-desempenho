@@ -30,5 +30,6 @@ do
     python3 grap.py --number $k
 done
 
+pdftk 10000-num-grafico.pdf 50000-num-grafico.pdf 100000-num-grafico.pdf cat output relatorio.pdf
 
 
