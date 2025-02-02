@@ -1,5 +1,5 @@
 <?php
-    if ($argc < 2) {
+    if ($argc != 2) {
         echo "Usage: php generate.php <arg1> ...\n";
         exit(1);
     }
