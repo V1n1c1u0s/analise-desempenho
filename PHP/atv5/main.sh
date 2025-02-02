@@ -27,6 +27,7 @@ do
     do
         python3 main.py "time-$k-$l.txt"
     done
+    python3 grap.py --number $k
 done
 
 
